@@ -5,3 +5,11 @@
 .container{
 	text-align:center;
  }
+ 
+#chartdiv{
+ 	height:600px;
+ 	width:600px;
+ }
+ 
+ #dataDiv{
+}

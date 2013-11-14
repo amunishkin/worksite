@@ -12,11 +12,11 @@
 <div class ="container">
 	<div class = "row">
 		
-		<div class = "span8">
-			<div id="chartdiv" style="height:600px;width:600px; "></div>
+		<div class="span8">
+			<div id="chartdiv"></div>
 		</div>
 	
-		<div class ="span4">
+		<div id="dataDiv" class ="span4">
 			<div class = "sliderDiv">
 				<h4>Professional Development of Teachers</h4>
 				<p>Which Teachers Receive it?</p>
@@ -57,12 +57,23 @@
 <script>
 $(document).ready(function(){
 	  $.jqplot.config.enablePlugins = true;
-      var s1 = [2, 6, 7, 10];
-      var ticks = ['a', 'b', 'c', 'd'];
-       
+      var s1 = [2, 6, 7, 8, 5, 4];
+      var ticks = ['3rd', '4th', '5th', '6th', '7th', '8th'];
       
       $("#generateGraphButton").on("click", function(){
-    	  plot1 = $.jqplot('chartdiv', [s1], {
+    	  
+    	  $( "#chartdiv" ).empty();
+    	  
+    	  var a = Math.floor((Math.random()*10)+1);
+    	  var b = Math.floor((Math.random()*10)+1);
+    	  var c = Math.floor((Math.random()*10)+1);
+    	  var d = Math.floor((Math.random()*10)+1);
+    	  var e = Math.floor((Math.random()*10)+1);
+    	  var f = Math.floor((Math.random()*10)+1);
+    	  
+    	  var series =[a,b,c,d,e,f];
+    	  
+    	  plot1 = $.jqplot('chartdiv', [series], {
               // Only animate if we're not using excanvas (not in IE 7 or IE 8)..
               animate: !$.jqplot.use_excanvas,
               seriesDefaults:{
@@ -73,7 +84,11 @@ $(document).ready(function(){
                   xaxis: {
                       renderer: $.jqplot.CategoryAxisRenderer,
                       ticks: ticks
-                  }
+                  },	 
+              
+              	  yaxis:{
+              		  
+              	  }
               },
               highlighter: { show: false }
           });
